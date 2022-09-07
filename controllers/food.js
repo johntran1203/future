@@ -34,7 +34,7 @@ const createFood = async (req, res) => {
     }
 }
 //Delete food/:id
-const deleteFood = async (req, rest) => {
+const deleteFood = async (req, res) => {
     try {
         // get id
         const { id } = req.params;
