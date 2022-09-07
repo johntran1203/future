@@ -1,3 +1,5 @@
+// controller goes first before routes
+
 const { Router } = require('express')
 const foodController = require("../controllers/food")
 
@@ -12,5 +14,10 @@ foodRouter.get("/:id", foodController.getFoodById);
 
 // make a POSt/ route and ref our controller's food function
 foodRouter.post('/',foodController.createFood);
+
+// make a Delete /:id route and ref our controller's deleteFood function
+foodRouter.delete("/:id", foodController.deleteFood);
+
+
 // export to use elsewhere
 module.exports = foodRouter;

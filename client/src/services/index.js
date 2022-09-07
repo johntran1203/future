@@ -35,3 +35,14 @@ export const createFood = async (newFood) => {
         console.error(error.message)
     }
 }
+
+// Delete FoodById (make a DELTE call to our DELETE /foods/:id endppoint)
+
+export const deleteFood = async (id) => {
+    try {
+        const response = await axios.delete(`${apiURL}/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error(error.message)
+    }
+}

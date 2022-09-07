@@ -1,3 +1,4 @@
+// controller goes first before routes
 const Food = require("../models/food")
 
 const getAllFoods = async (req, res) => {
@@ -32,9 +33,32 @@ const createFood = async (req, res) => {
         res.status(500).json({ error: e.message});
     }
 }
+//Delete food/:id
+const deleteFood = async (req, rest) => {
+    try {
+        // get id
+        const { id } = req.params;
+        // findByIdAndeDelte
+        Food.findByIdAndDelete(id, (err, food) => {
+            //if there's an error
+            if(err) {
+                return res.status(500).json({error: err.message});
+            }
+            // location does not exist
+            if(!food) {
+                return res.status(404).json({error: "Your data is somewhere else for some reason. HUHHHH"});
+            }
+            // success!!
+            res.status(204).send(`location with id ${id} successfully deleted!`);
+        });
+    } catch(e) {
+        rest.status(500).json({error: e.message });
+    }
+}
 
 module.exports = {
     getAllFoods,
     getFoodById,
     createFood,
+    deleteFood,
 }
