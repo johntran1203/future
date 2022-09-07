@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Nav } from './components/Nav';
 import { Home} from './screens/Home';
 import { FoodDetail} from './screens/FoodDetail';
+import { NewLocation } from './screens/NewLocation';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/foods/:id"  element={<FoodDetail/> }/>
-      <Route path="/new-food" element={<Home />} />
+      <Route path="/newFood" element={<NewLocation />} />
       </Routes>
   
     </div>
