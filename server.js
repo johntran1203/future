@@ -7,6 +7,7 @@ const logger = require("morgan");
 // create the connection!
 require("./db");
 const foodRouter = require("./routes/food")
+const api = require("./routes");
 
 // set up express server
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(logger("dev"));
 
 // use router as middleware
+app.use('/api', api);
 app.use("/foods", foodRouter);
 
 // root route that sends the user "This is the root route!"
