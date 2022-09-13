@@ -13,6 +13,8 @@ export const Nav = () => {
       <div>
         <Link to="/"> Home </Link>
         <Link to="/newFood"> Enter food </Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/register'>Register</Link>
       </div>
       <ul className="social-icons">
         {social.map((socialIcon) => {

@@ -5,6 +5,18 @@ const apiURL =
         ? "http://localhost:3001/foods"
         : "http://localhost:3001/foods";
 
+// registerUser should be and exported async function thast takes in a user and requests the api's /api/auth/register post route with a body of userInfo (passed in a via a param)
+export const registerUser = async (userInfo) => {
+    try {
+        const response = await axios.get(`${apiURL}/api/auth/register`, userInfo);
+        // set an item via localStorage
+        // localStorage.setItem("someky", somevalue);
+        localStorage.setItem("token", response.data.token);
+        return response.data.user;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
 
 // getFood
 export const getFoods = async () => {
