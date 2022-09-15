@@ -7,15 +7,18 @@ import { Contact } from "./components/Contact";
 import { FoodDetail } from "./screens/FoodDetail";
 import { NewLocation } from "./screens/NewLocation";
 import Register from "./screens/Register";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const AppContext = createContext();
 
 function App() {
   const [user, setUser] = useState(null);
   const [userName, setUserName] = useState("john")
+  const client = new QueryClient();
 
   return (
     <div className="App">
+       <QueryClientProvider client={client}>
       <AppContext.Provider value={{userName, setUserName}}>
       <Nav />
       <Routes>
@@ -28,6 +31,7 @@ function App() {
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
       </AppContext.Provider>
+      </QueryClientProvider>
     </div>
   );
 }
