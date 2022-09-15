@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Nav } from "./components/Nav";
 import { Home } from "./screens/Home";
@@ -8,11 +8,15 @@ import { FoodDetail } from "./screens/FoodDetail";
 import { NewLocation } from "./screens/NewLocation";
 import Register from "./screens/Register";
 
+export const AppContext = createContext();
+
 function App() {
   const [user, setUser] = useState(null);
+  const [userName, setUserName] = useState("john")
 
   return (
     <div className="App">
+      <AppContext.Provider value={{userName, setUserName}}>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -23,6 +27,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
+      </AppContext.Provider>
     </div>
   );
 }
